@@ -58,7 +58,7 @@ public class JwtTokenProvider {
 
             String usernameInToken = claimsJws.getPayload().getSubject();
 
-            boolean isUsernameValid = usernameInToken.equals(userDetails.getUsername());
+            boolean isUsernameValid = usernameInToken.equalsIgnoreCase(userDetails.getUsername());
             boolean isTokenNotExpired = !claimsJws.getPayload().getExpiration().before(new Date());
 
             return isUsernameValid && isTokenNotExpired;
