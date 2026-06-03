@@ -2,16 +2,10 @@ package com.btvn.ss17ex5.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/games")
-public class GameController {
-
-    @GetMapping("/{gameId}/play")
-    public String playGame(@PathVariable UUID gameId) {
-        return "Đang tải dữ liệu trò chơi: " + gameId;
-    }
+public class GameInteractionController {
 
     @DeleteMapping("/comments/{commentId}")
     @PreAuthorize("hasAnyRole('MODERATOR', 'ADMIN') or @commentService.getCommentAuthor(#commentId) == authentication.name")
